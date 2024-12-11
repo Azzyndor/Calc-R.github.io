@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор цепей переменного тока</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Калькулятор цепей переменного тока</h1>
+    </header>
+
+    <main>
+        <div class="sections-container">
+            <section id="section1">
+                <h2>1. Закон Ома</h2>
+                <form onsubmit="calculateOhmsLaw(event)">
+                    <label for="voltage">Напряжение (V):</label>
+                    <input type="number" id="voltage" placeholder="Введите напряжение" step="0.001" required>
+                    
+                    <label for="current">Сила тока (I):</label>
+                    <input type="number" id="current" placeholder="Введите ток" step="0.001" required>
+                    
+                    <button type="submit">Посчитать</button>
+                </form>
+                <div class="formula">
+                    <img src="./image/formula_ohm.png" alt="Формула Закона Ома">
+                </div>
+                <p id="result-ohms-law" class="result"></p>
+            </section>
+
+            <section id="section2">
+                <h2>2. Активное сопротивление</h2>
+                <form onsubmit="calculateActiveResistance(event)">
+                    <label for="resistance">Сопротивление (R):</label>
+                    <input type="number" id="resistance" placeholder="Введите сопротивление" step="0.001" required>
+                    
+                    <button type="submit">Посчитать</button>
+                </form>
+                <div class="formula">
+                    <img src="./image/formula_resistance.png" alt="Формула Активного Сопротивления">
+                </div>
+                <p id="result-active-resistance" class="result"></p>
+            </section>
+
+            <section id="section3">
+                <h2>3. Сопротивление и ёмкость (последовательно)</h2>
+                <form onsubmit="calculateResistanceCapacitanceSeries(event)">
+                    <label for="resistance-r3">Сопротивление (R):</label>
+                    <input type="number" id="resistance-r3" placeholder="Введите сопротивление" step="0.001" required>
+                    
+                    <label for="frequency3">Частота (f):</label>
+                    <input type="number" id="frequency3" placeholder="Введите частоту" step="0.001" required>
+                    
+                    <label for="capacitance3">Ёмкость (C):</label>
+                    <input type="number" id="capacitance3" placeholder="Введите ёмкость" step="0.001" required>
+                    
+                    <button type="submit">Посчитать</button>
+                </form>
+                <div class="formula">
+                    <img src="./image/formula_impedance.png" alt="Формула Импеданса">
+                </div>
+                <p id="result-resistance-capacitance-series" class="result"></p>
+            </section>
+
+
+            <section id="section4">
+                <h2>4. Сопротивление и индуктивность (последовательно)</h2>
+                <form onsubmit="calculateResistanceInductanceSeries(event)">
+                    <label for="resistance4">Сопротивление (R):</label>
+                    <input type="number" id="resistance4" placeholder="Введите сопротивление" step="0.001" required>
+                    
+                    <label for="inductance">Индуктивность (L):</label>
+                    <input type="number" id="inductance" placeholder="Введите индуктивность" step="0.001" required>
+                    
+                    <label for="frequency4">Частота (f):</label>
+                    <input type="number" id="frequency4" placeholder="Введите частоту" step="0.001" required>
+                    
+                    <button type="submit">Посчитать</button>
+                </form>
+                <div class="formula">
+                    <img src="./image/formula_resistance_inductance_series.png" alt="Формула для Сопротивления и Индуктивности (последовательно)">
+                </div>
+                <p id="result-resistance-inductance-series" class="result"></p>
+            </section>
+
+            <section id="section5">
+                <h2>5. Сопротивление, ёмкость и индуктивность (последовательно)</h2>
+                <form onsubmit="calculateResistanceCapacitanceInductanceSeries(event)">
+                    <label for="resistance5">Сопротивление (R):</label>
+                    <input type="number" id="resistance5" placeholder="Введите сопротивление" step="0.001" required>
+                    
+                    <label for="capacitance5">Ёмкость (C):</label>
+                    <input type="number" id="capacitance5" placeholder="Введите ёмкость" step="0.001" required>
+                    
+                    <label for="inductance5">Индуктивность (L):</label>
+                    <input type="number" id="inductance5" placeholder="Введите индуктивность" step="0.001" required>
+                    
+                    <label for="frequency5">Частота (f):</label>
+                    <input type="number" id="frequency5" placeholder="Введите частоту" step="0.001" required>
+                    
+                    <button type="submit">Посчитать</button>
+                </form>
+                <div class="formula">
+                    <img src="./image/formula_resistance_capacitance_inductance_series.png" alt="Формула для Сопротивления, Ёмкости и Индуктивности (последовательно)">
+                </div>
+                <p id="result-resistance-capacitance-inductance-series" class="result"></p>
+            </section>
+
+            <section id="section6">
+                <h2>6. Сопротивление и ёмкость (параллельно)</h2>
+                <form onsubmit="calculateResistanceCapacitanceParallel(event)">
+                    <label for="resistance6">Сопротивление (R):</label>
+                    <input type="number" id="resistance6" placeholder="Введите сопротивление" step="0.001" required>
+                    
+                    <label for="capacitance6">Ёмкость (C):</label>
+                    <input type="number" id="capacitance6" placeholder="Введите ёмкость" step="0.001" required>
+
+                    <label for="frequency6">Частота (f):</label>
+                    <input type="number" id="frequency6" placeholder="Введите частоту" step="0.001" required>
+                    
+                    <button type="submit">Посчитать</button>
+                </form>
+                <div class="formula">
+                    <img src="./image/formula_resistance_capacitance_parallel.png" alt="Формула для Сопротивления и Ёмкости (параллельно)">
+                </div>
+                <p id="result-resistance-capacitance-parallel" class="result"></p>
+            </section>
+
+            <section id="section7">
+                <h2>7. Сопротивление и индуктивность (параллельно)</h2>
+                <form onsubmit="calculateResistanceInductanceParallel(event)">
+                    <label for="resistance7">Сопротивление (R):</label>
+                    <input type="number" id="resistance7" placeholder="Введите сопротивление" step="0.001" required>
+                    
+                    <label for="inductance7">Индуктивность (L):</label>
+                    <input type="number" id="inductance7" placeholder="Введите индуктивность" step="0.001" required>
+                    
+                    <button type="submit">Посчитать</button>
+
+                    <label for="frequency7">Частота (f):</label>
+                    <input type="number" id="frequency7" placeholder="Введите частоту" step="0.001" required>
+
+                </form>
+                <div class="formula">
+                    <img src="./image/formula_resistance_inductance_parallel.png" alt="Формула для Сопротивления и Индуктивности (параллельно)">
+                </div>
+                <p id="result-resistance-inductance-parallel" class="result"></p>
+            </section>
+
+            <section id="section8">
+                <h2>8. Сопротивление, ёмкость и индуктивность (параллельно)</h2>
+                <form onsubmit="calculateResistanceCapacitanceInductanceParallel(event)">
+                    <label for="resistance8">Сопротивление (R):</label>
+                    <input type="number" id="resistance8" placeholder="Введите сопротивление" step="0.001" required>
+                    
+                    <label for="capacitance8">Ёмкость (C):</label>
+                    <input type="number" id="capacitance8" placeholder="Введите ёмкость" step="0.001" required>
+                    
+                    <label for="inductance8">Индуктивность (L):</label>
+                    <input type="number" id="inductance8" placeholder="Введите индуктивность" step="0.001" required>
+
+                    <label for="frequency8">Частота (f):</label>
+                    <input type="number" id="frequency8" placeholder="Введите частоту" step="0.001" required>
+                    
+                    <button type="submit">Посчитать</button>
+                </form>
+                <div class="formula">
+                    <img src="./image/formula_resistance_capacitance_inductance_parallel.png" alt="Формула для Сопротивления, Ёмкости и Индуктивности (параллельно)">
+                </div>
+                <p id="result-resistance-capacitance-inductance-parallel" class="result"></p>
+            </section>
+
+            <section id="section9">
+                <h2>9. Сопротивление и ёмкость - последовательно параллельно индуктивности</h2>
+                <form onsubmit="calculateResistanceCapacitanceInductanceCombination(event)">
+                    <label for="resistance9">Сопротивление (R):</label>
+                    <input type="number" id="resistance9" placeholder="Введите сопротивление" step="0.001" required>
+                    
+                    <label for="capacitance9">Ёмкость (C):</label>
+                    <input type="number" id="capacitance9" placeholder="Введите ёмкость" step="0.001" required>
+                    
+                    <label for="inductance9">Индуктивность (L):</label>
+                    <input type="number" id="inductance9" placeholder="Введите индуктивность" step="0.001" required>
+                    
+                    <label for="frequency9">Частота (f):</label>
+                    <input type="number" id="frequency9" placeholder="Введите частоту" step="0.001" required>
+                    
+                    <button type="submit">Посчитать</button>
+                </form>
+                <div class="formula">
+                    <img src="./image/formula_resistance_capacitance_inductance_combination.png" alt="Формула для Сопротивления и Ёмкости с Параллельной Индуктивностью">
+                </div>
+                <p id="result-resistance-capacitance-inductance-combination" class="result"></p>
+            </section>
+
+            <section id="section10">
+                <h2>10. Сопротивление и индуктивность - последовательно, параллельно ёмкости</h2>
+                <form onsubmit="calculateResistanceInductanceCapacitanceCombination(event)">
+                    <label for="resistance10">Сопротивление (R):</label>
+                    <input type="number" id="resistance10" placeholder="Введите сопротивление" step="0.001" required>
+                    
+                    <label for="inductance10">Индуктивность (L):</label>
+                    <input type="number" id="inductance10" placeholder="Введите индуктивность" step="0.001" required>
+                    
+                    <label for="capacitance10">Ёмкость (C):</label>
+                    <input type="number" id="capacitance10" placeholder="Введите ёмкость" step="0.001" required>
+            
+                    <label for="frequency10">Частота (f):</label>
+                    <input type="number" id="frequency10" placeholder="Введите частоту" step="0.001" required>
+            
+                    <button type="submit">Посчитать</button>
+                </form>
+                <div class="formula">
+                    <img src="./image/formula_resistance_inductance_capacitance_combination.png" alt="Формула для Сопротивления и Индуктивности с Параллельной Ёмкостью">
+                </div>
+                <p id="result-resistance-inductance-capacitance-combination" class="result"></p>
+            </section>
+            
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
